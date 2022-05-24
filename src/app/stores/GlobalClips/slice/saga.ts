@@ -15,7 +15,7 @@ function* simpleClipResize({ payload }: SagaLoad<SimpleResizePayload>) {
   const style: Clip['styles'] = (yield select(selectClipsMap))[uuid].styles;
 
   const normalizeX = Math.max(0, coordinateX);
-  const changeX = style.x - coordinateX;
+  const changeX = style.x - normalizeX;
   const width = style.width + changeX;
 
   yield put(
